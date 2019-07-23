@@ -1,5 +1,5 @@
 
-let input = '123KM'
+let input = '5km';
 
 var result;
 
@@ -18,7 +18,14 @@ console.log("TCL: myUnit", myUnit)
 let testnNum = 5/3;
 console.log("TCL: testnNum", testnNum)
 
-let testStr = '5/3';
+let testStr = '55/44';
+console.log("TCL: testStr", testStr)
+
+let evalRegEx = /^\d+\/?\d+$/;
+
+evalRegEx.test(testStr);
+console.log("TCL: evalRegEx.test(testStr);", evalRegEx.test(testStr));
+
 let myParseNum = eval(testStr);
 console.log("TCL: myParseNum", myParseNum)
 

@@ -20,8 +20,12 @@ function ConvertHandler() {
 
     if(myNumber.length === 0) {
       result = 1;
-    } else {
+    } else if (
+      !/^\d+\/?\d+$/.test(myNumber)
+    ) {
       // for 6/4 etc. to work
+      result = undefined;
+    } else {
       result = eval(myNumber);
     }
 
@@ -73,6 +77,7 @@ function ConvertHandler() {
     return result;
   };
 
+  //is this used anywhere???
   this.spellOutUnit = function(unit) {
     var result;
     
@@ -114,7 +119,7 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
     
-    let fiveDecimals = Math.round(initNum*100000)/10000;
+    let fiveDecimals = Math.round(returnNum*100000)/100000;
 
     result = `${initNum} ${initUnit} converts to ${fiveDecimals} ${returnUnit}`
 
@@ -122,7 +127,7 @@ function ConvertHandler() {
   };
   
   //'3.1 miles converts to 5.00002 kilometers
-
+  //http://localhost:3000/api/convert?input=5kg
 }
 //exports is an object 
 // https://www.tutorialsteacher.com/nodejs/nodejs-module-exports

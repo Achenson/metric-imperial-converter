@@ -10,7 +10,7 @@
 
 var expect = require('chai').expect;
 var ConvertHandler = require('../controllers/convertHandler.js');
-
+// app parameter will be the app in server.js
 module.exports = function (app) {
   
   var convertHandler = new ConvertHandler();
@@ -24,7 +24,26 @@ module.exports = function (app) {
       var returnUnit = convertHandler.getReturnUnit(initUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       
-      //res.json
+      if(!(initUnit === 'kg' || initUnit === 'lbs' || initUnit === 'L' || initUnit === 'gls'
+      || initUnit === 'mi' || initUnit === 'km' )) {
+        res.send('invalid unit');
+        
+      } else if (typeof initNum === 'undefined') {
+        res.send('invalid number')
+      }
+      else
+      
+      {
+        res.json({
+          initNum: initNum,
+          initUnit: initUnit,
+          returnNum:  returnNum,
+          returnUnit: returnUnit,
+          string: toString
+        })
+      }
+
+      
     });
     
 };

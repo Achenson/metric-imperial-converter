@@ -18,7 +18,14 @@ function ConvertHandler() {
     let myNumber = input.slice(0, whereToSlice);
     console.log("TCL: myNumber", myNumber)
 
-    result = myNumber;
+    if(myNumber.length === 0) {
+      result = 1;
+    } else {
+      // for 6/4 etc. to work
+      result = eval(myNumber);
+    }
+
+    
 
     return result;
   };
@@ -58,11 +65,8 @@ function ConvertHandler() {
         result='km';
         break;
       case 'km':
-          result='mi';
-          break;
-
-
-
+        result='mi';
+        break;
 
     }
     
@@ -80,10 +84,28 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
-    
 
-    
+    switch(initUnit) {
+      case 'gal':
+        result=initNum * galToL;
+        break;
+      case 'L':
+        result=initNum / galToL;
+        break;
+      case 'lbs':
+        result=initNum * lbsToKg ;
+        break;
+      case 'kg':
+        result=initNum / lbsToKg;
+        break;
+      case 'mi':
+        result=initNum * miToKm;
+        break;
+      case 'km':
+        result=initNum / miToKm;
+        break;
 
+    }
 
 
     return result;
@@ -92,9 +114,15 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
     
+    let fiveDecimals = Math.round(initNum*100000)/10000;
+
+    result = `${initNum} ${initUnit} converts to ${fiveDecimals} ${returnUnit}`
+
     return result;
   };
   
+  //'3.1 miles converts to 5.00002 kilometers
+
 }
 //exports is an object 
 // https://www.tutorialsteacher.com/nodejs/nodejs-module-exports

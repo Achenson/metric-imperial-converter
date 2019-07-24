@@ -40,7 +40,7 @@ module.exports = function(app) {
       ) &&
       typeof initNum === "undefined"
     ) {
-      res.send("invalid number and unit");
+      res.json({string: "invalid number and unit"});
     } else if (
       !(
         initUnit === "kg" ||
@@ -51,9 +51,9 @@ module.exports = function(app) {
         initUnit === "km"
       )
     ) {
-      res.send("invalid unit");
+      res.json({string: "invalid unit"});
     } else if (typeof initNum === "undefined") {
-      res.send("invalid number");
+      res.json({string: "invalid number"});
     } else {
       res.json({
         initNum: initNum,

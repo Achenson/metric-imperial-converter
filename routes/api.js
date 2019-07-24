@@ -34,7 +34,7 @@ module.exports = function(app) {
         initUnit === "kg" ||
         initUnit === "lbs" ||
         initUnit === "L" ||
-        initUnit === "gls" ||
+        initUnit === "gal" ||
         initUnit === "mi" ||
         initUnit === "km"
       ) &&
@@ -46,7 +46,7 @@ module.exports = function(app) {
         initUnit === "kg" ||
         initUnit === "lbs" ||
         initUnit === "L" ||
-        initUnit === "gls" ||
+        initUnit === "gal" ||
         initUnit === "mi" ||
         initUnit === "km"
       )

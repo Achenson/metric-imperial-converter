@@ -81,6 +81,30 @@ function ConvertHandler() {
   //is this used anywhere???
   this.spellOutUnit = function(unit) {
     var result;
+
+    switch(unit) {
+      case 'gal':
+        result='gallons';
+        break;
+      case 'L':
+        result='liters';
+        break;
+      case 'lbs':
+        result='pounds';
+        break;
+      case 'kg':
+        result='kilograms';
+        break;
+      case 'mi':
+        result='miles';
+        break;
+      case 'km':
+        result='kilometers';
+        break;
+
+    }
+
+
     
     return result;
   };

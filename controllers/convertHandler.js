@@ -22,7 +22,7 @@ function ConvertHandler() {
       result = 1;
     } else if (
       
-      !/^\d+([\/\.]\d+)?$/.test(myNumber)
+      !/^\d+(\.\d+)?(\/\d+(\.\d+)?)?$/.test(myNumber)
     ) {
       // for 6/4 etc. to work
       result = undefined;

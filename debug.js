@@ -18,16 +18,19 @@ console.log("TCL: myUnit", myUnit)
 let testnNum = 5/3;
 console.log("TCL: testnNum", testnNum)
 
-let testStr = '55/44';
+console.clear();
+
+let testStr = '5/';
 console.log("TCL: testStr", testStr)
 
-let evalRegEx = /^\d+\/?\d+$/;
+let evalRegEx = /^\d+(\/\d+)?$/;
+//let evalRegEx = /^\d+\/?(\d+)?$/;
 
 evalRegEx.test(testStr);
 console.log("TCL: evalRegEx.test(testStr);", evalRegEx.test(testStr));
 
-let myParseNum = eval(testStr);
-console.log("TCL: myParseNum", myParseNum)
+//let myParseNum = eval(testStr);
+//console.log("TCL: myParseNum", myParseNum)
 
 
 

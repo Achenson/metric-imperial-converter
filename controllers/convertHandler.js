@@ -21,7 +21,8 @@ function ConvertHandler() {
     if(myNumber.length === 0) {
       result = 1;
     } else if (
-      !/^\d+\/?\d+$/.test(myNumber)
+      
+      !/^\d+(\/\d+)?$/.test(myNumber)
     ) {
       // for 6/4 etc. to work
       result = undefined;

@@ -22,11 +22,15 @@ module.exports = function(app) {
     var initUnit = convertHandler.getUnit(input);
     var returnNum = convertHandler.convert(initNum, initUnit);
     var returnUnit = convertHandler.getReturnUnit(initUnit);
+
+    var spellOutInit =convertHandler.spellOutUnit(initUnit);
+    var spellOutReturn = convertHandler.spellOutUnit(returnUnit);
+
     var toString = convertHandler.getString(
       initNum,
-      initUnit,
+      spellOutInit,
       returnNum,
-      returnUnit
+      spellOutReturn
     );
 
     if (

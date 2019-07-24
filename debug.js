@@ -20,10 +20,11 @@ console.log("TCL: testnNum", testnNum)
 
 console.clear();
 
-let testStr = '5/';
+let testStr = '53';
 console.log("TCL: testStr", testStr)
 
-let evalRegEx = /^\d+(\/\d+)?$/;
+let evalRegEx = /^\d+([\/\.]\d+)?$/;
+//let evalRegEx = /^\d+(\/\d+)?$/;
 //let evalRegEx = /^\d+\/?(\d+)?$/;
 
 evalRegEx.test(testStr);

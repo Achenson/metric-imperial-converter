@@ -44,7 +44,7 @@
     <hr style='margin: 50px'>
     <div id='testui' style='margin-left: 5%'>
       <h2 style="text-align: left">Front-End:</h2>
-      <form id="convertForm" class="border">
+      <form id="convertForm" class="border" >
         <input type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 200px">
         <input id="convert" type="submit" value='Convert!'>
       </form>
@@ -58,15 +58,29 @@
             crossorigin="anonymous"></script>
     <script>
 
-const myForm = document.getElementById('convertForm');
 
-myForm.onsubmit = function() {
-  event.preventDefault();
+//<form id="convertForm" class="border" action="/api/convert" method="get">
 
-  fetch({
-    
-  })
-}
+      const myForm = document.getElementById('convertForm');
+
+      let myInput = document.getElementById('convertField');
+
+      myForm.onsubmit = function(e) {
+        e.preventDefault();
+
+        
+
+        console.log(myInput.value);
+
+        fetch('/api/convert?input=' + myInput.value.toString())
+        .then(response => response.text())
+        .then(data => console.log(data));
+
+
+      }
+
+
+
 
 
 /*
@@ -84,6 +98,18 @@ myForm.onsubmit = function() {
           });
         });
       });
+
+const myForm = document.getElementById('convertForm');
+
+myForm.onsubmit = function() {
+  event.preventDefault();
+
+  fetch('/api/convert')
+    .then(response => response.text())
+    .then(data => console.log(data))
+}
+
+
 
       */
    </script>

@@ -56,7 +56,7 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 200);
           assert.equal(res.body.string, 'invalid number');
           done();
-
+        });
       });  
       
       test('Convert 3/7.2/4kilomegagram (invalid number and unit)', function(done) {
@@ -67,7 +67,7 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 200);
           assert.equal(res.body.string, 'invalid number and unit');
           done();
-       
+        });
       });
       
       test('Convert kg (no number)', function(done) {
@@ -89,5 +89,7 @@ suite('Functional Tests', function() {
     });
 
   });
+
+});
 
 });

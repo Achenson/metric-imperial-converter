@@ -48,6 +48,8 @@ function ConvertHandler() {
     result = myUnit;
 
     return result;
+
+    
   };
   
   this.getReturnUnit = function(initUnit) {
@@ -78,7 +80,7 @@ function ConvertHandler() {
     return result;
   };
 
-  //is this used anywhere???
+  
   this.spellOutUnit = function(unit) {
     var result;
 

@@ -45,18 +45,14 @@ describe("Function convertHandler.getUnit(input)", function() {
       "km",
       "lbs",
       "kg",
-      "GAL",
-      "L",
-      "MI",
-      "KM",
-      "LBS",
-      "KG"
+     
     ];
     input.forEach(function(el) {
       assert.equal(convertHandler.getUnit(el), el);
     });
     done();
   });
+
 
   it("Unknown Unit Input", function(done) {
     var input = "adsflkj";
@@ -67,8 +63,8 @@ describe("Function convertHandler.getUnit(input)", function() {
 
 describe("Function convertHandler.getReturnUnit(initUnit)", function() {
   it("For Each Valid Unit Inputs", function(done) {
-    var input = ["gal", "l", "mi", "km", "lbs", "kg"];
-    var expect = ["l", "gal", "km", "mi", "kg", "lbs"];
+    var input = ["gal", "L", "mi", "km", "lbs", "kg"];
+    var expect = ["L", "gal", "km", "mi", "kg", "lbs"];
     input.forEach(function(ele, i) {
       assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
     });
@@ -79,7 +75,7 @@ describe("Function convertHandler.getReturnUnit(initUnit)", function() {
 describe("Function convertHandler.spellOutUnit(unit)", function() {
   it("For Each Valid Unit Inputs", function(done) {
     //see above example for hint
-    var input = ["gal", "l", "mi", "km", "lbs", "kg"];
+    var input = ["gal", "L", "mi", "km", "lbs", "kg"];
     var expect = [
       "gallons",
       "liters",
@@ -89,7 +85,7 @@ describe("Function convertHandler.spellOutUnit(unit)", function() {
       "kilograms"
     ];
     input.forEach(function(ele, i) {
-      assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
+      assert.equal(convertHandler.spellOutUnit(ele), expect[i]);
     });
 
     done();

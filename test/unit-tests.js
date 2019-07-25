@@ -40,7 +40,7 @@ describe("Function convertHandler.getUnit(input)", function() {
   it("For Each Valid Unit Inputs", function(done) {
     var input = [
       "gal",
-      "l",
+      "L",
       "mi",
       "km",
       "lbs",

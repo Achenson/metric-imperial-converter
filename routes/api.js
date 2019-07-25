@@ -34,26 +34,16 @@ module.exports = function(app) {
     );
 
     if (
-      !(
-        initUnit === "kg" ||
-        initUnit === "lbs" ||
-        initUnit === "L" ||
-        initUnit === "gal" ||
-        initUnit === "mi" ||
-        initUnit === "km"
-      ) &&
+      
+        typeof initUnit === "undefined"
+      &&
       typeof initNum === "undefined"
     ) {
       res.json({string: "invalid number and unit"});
     } else if (
-      !(
-        initUnit === "kg" ||
-        initUnit === "lbs" ||
-        initUnit === "L" ||
-        initUnit === "gal" ||
-        initUnit === "mi" ||
-        initUnit === "km"
-      )
+      
+        typeof initUnit === "undefined"
+      
     ) {
       res.json({string: "invalid unit"});
     } else if (typeof initNum === "undefined") {

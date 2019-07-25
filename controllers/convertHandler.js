@@ -45,11 +45,25 @@ function ConvertHandler() {
     let myUnit = input.slice(whereToSlice);
     console.log("TCL: myUnit", myUnit)
 
-    result = myUnit;
+    if(!([
+      "gal",
+      "L",
+      "mi",
+      "km",
+      "lbs",
+      "kg",
+    ].includes(myUnit))) {
+      result = undefined;
+
+    } else {
+      result = myUnit;
+    }
+
+    
 
     return result;
 
-    
+
   };
   
   this.getReturnUnit = function(initUnit) {

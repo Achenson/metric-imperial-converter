@@ -114,9 +114,16 @@
       myForm.onsubmit = function(e) {
         e.preventDefault();
 
-        console.log(myInput.value);
+       
 
-        fetch("/api/convert?input=" + myInput.value.toString())
+        let myURL = new URL(location.origin + '/api/convert');
+        //to encode URL (not needed in this case)
+        myURL.searchParams.set('input',  myInput.value.toString());
+        
+        //also can be done as below:
+        //fetch("/api/convert?input=" + myInput.value.toString()
+        //but it works only because no URL encoding is needed
+        fetch(myURL)
           .then(response => response.json())
           .then(data => {
             console.log(data.string)
@@ -149,17 +156,6 @@
           });
         });
       });
-
-const myForm = document.getElementById('convertForm');
-
-myForm.onsubmit = function() {
-  event.preventDefault();
-
-  fetch('/api/convert')
-    .then(response => response.text())
-    .then(data => console.log(data))
-}
-
 
 
       */

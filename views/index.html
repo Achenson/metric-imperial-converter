@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to HyperDev!</title>
+    <title>Metric/Imp Converter</title>
     <meta name="description" content="A cool thing made with HyperDev" />
     <link
       id="favicon"
@@ -12,149 +12,169 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/dist/styleTailwind.css" />
+    <!-- <link rel="stylesheet" href="/dist/styleTailwind.css" /> -->
+    
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   </head>
-  <body>
-    <header>
-      <h1 >
-        ISQA_2 - Metric/Imp Converter
-      </h1>
-    </header>
-    <div id="userstories" style="margin-left: 5%; margin-top: 5%">
-      <h3>User Stories</h3>
-      <ol>
-        <li>
-          I will help prevent the client from trying to guess(sniff) the MIME
-          type.
-        </li>
-        <li>I will prevent cross-site scripting (XSS) attacks.</li>
-        <li>
-          I can <b>GET</b> <code>/api/convert</code> with a single parameter
-          containing an accepted number and unit and have it converted.
-        </li>
-        <li>
-          Hint: Split the input by looking for the index of the first character.
-        </li>
-        <li>
-          I can convert 'gal' to 'L' and vice versa. <b>(1 gal to 3.78541 L)</b>
-        </li>
-        <li>
-          I can convert 'lbs' to 'kg' and vice versa.
-          <b>(1 lbs to 0.453592 kg)</b>
-        </li>
-        <li>
-          I can convert 'mi' to 'km' and vice versa. <b>(1 mi to 1.60934 km)</b>
-        </li>
-        <li>
-          If my unit of measurement is invalid, returned will be 'invalid unit'.
-        </li>
-        <li>If my number is invalid, returned with will 'invalid number'.</li>
-        <li>If both are invalid, return will be 'invalid number and unit'.</li>
-        <li>
-          I can use fractions, decimals or both in my parameter(ie. 5, 1/2,
-          2.5/6), but if nothing is provided it will default to 1.
-        </li>
-        <li>
-          My return will consist of the initNum, initUnit, returnNum,
-          returnUnit, and string spelling out units in format
-          <code
-            >{initNum} {initial_Units} converts to {returnNum}
-            {return_Units}</code
-          >
-          with the result rounded to 5 decimals.
-        </li>
-        <li>All 16 unit tests are complete and passing.</li>
-        <li>All 5 functional tests are complete and passing.</li>
-      </ol>
-      <h3>Example usage:</h3>
-      <code>/api/convert?input=4gal</code><br />
-      <code>/api/convert?input=1/2km</code><br />
-      <code>/api/convert?input=5.4/3lbs</code><br />
-      <code>/api/convert?input=kg</code><br />
-      <h3>Example return:</h3>
-      <code
-        >{initNum: 3.1, initUnit: 'mi', returnNum: 5.0000008, returnUnit: 'km',
-        string: '3.1 miles converts to 5.00002 kilometers'}</code
-      >
-    </div>
-    <hr style="margin: 50px" />
-    <div id="testui" style="margin-left: 5%">
-      <h2 style="text-align: left">Front-End:</h2>
-      <form id="convertForm" class="border">
-        <input
-          type="text"
-          id="convertField"
-          name="input"
-          placeholder="3.1mi"
-          style="width: 200px"
-        />
-        <input id="convert" type="submit" value="Convert!" />
-      </form>
-      <p id="result"></p>
-      <code id="jsonResult"></code>
-    </div>
-    <hr style="margin: 50px; margin-top: 200px" />
-    <!-- Your web-app is https, so your scripts need to be too -->
-  
-    <script>
-      //<form id="convertForm" class="border" action="/api/convert" method="get">
+  <body class="bg-blue-100">
+    <div class="bg-red-100 px-1 sm:px-5 mx-auto max-w-3xl h-screen shadow ">
+      <header>
+        <h1 class="text-3xl text-center font-semibold">
+          Metric/Imperial Converter
+        </h1>
+        <h2 class="text-center font-semibold text-gray-500 text-lg">FreeCodeCamp Apis And Microservices Project 01</h2>
+      </header>
 
-      const myForm = document.getElementById("convertForm");
+      <hr />
+      <div id="instructions" class="my-5 text-lg">
+          <h3 class="text-xl font-semibold">Instructions</h3>
+        <ol class="list-decimal">
+          <li>
+            Enter input in a format of <b>[number]kg/lbs/L/gal/km/mi</b>
+          </li>
+          <li>
+              Get value of the corresponding metric/imperial unit
+            </li>
+            <li>
+               Get a link for server's json response
+              </li>
+             
+        </ol>
 
-      const myInput = document.getElementById("convertField");
+      </div>
 
-      const result = document.getElementById("result");
-
-      const jsonResult = document.getElementById("jsonResult");
-
-      myForm.onsubmit = function(e) {
-        e.preventDefault();
-
-       
-
-        let myURL = new URL(location.origin + '/api/convert');
-        //to encode URL (not needed in this case)
-        myURL.searchParams.set('input',  myInput.value.toString());
+      <div id="testui" class="mx-auto my-5 bg-green-200 h-48 ">
         
-        //also can be done as below:
-        //fetch("/api/convert?input=" + myInput.value.toString()
-        //but it works only because no URL encoding is needed
-        fetch(myURL)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data.string)
-            result.innerText = data.string;
-
-            jsonResult.innerHTML = '';
-            let link = document.createElement('a');
-            link.setAttribute('href', "/api/convert?input=" + myInput.value.toString());
-            link.setAttribute('target','_blank')
-            link.innerText = data.string;
-            jsonResult.appendChild(link);
-
-
-
-          });
-      };
-
-      /*
-      $(function() {
-        $('#convertForm').submit(function() {
-          event.preventDefault();
-          $.ajax({
-            url: '/api/convert',
-            type: 'get',
-            data: $('#convertForm').serialize(),
-            success: function(data) {
-              $('#result').text(data.string || data);
-              $('#jsonResult').text(JSON.stringify(data));
-            }
-          });
-        });
-      });
+        <form id="convertForm" class="mx-auto px-64">
+          <input
+            type="text"
+            id="convertField"
+            name="input"
+            placeholder="3.1mi"
+            class="shadow appearance-none border my-5 w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none "
+          />
+         
+          <button
+            id="convert"
+            type="submit"
+            value="Convert!"
+            class="bg-green-500 hover:bg-green-700 w-full text-white font-bold py-2 px-2 shadow"
+          >
+            Convert
+          </button>
+        </form>
+        <p id="result"></p>
+        <code id="jsonResult"></code>
+      </div>
+      <hr />
 
 
-      */
-    </script>
+
+      <div id="userstories">
+        <h3 class="text-xl font-semibold">User Stories</h3>
+        <ol>
+          <li>
+            I will help prevent the client from trying to guess(sniff) the MIME
+            type.
+          </li>
+          <li>I will prevent cross-site scripting (XSS) attacks.</li>
+          <li>
+            I can <b>GET</b> <code>/api/convert</code> with a single parameter
+            containing an accepted number and unit and have it converted.
+          </li>
+          <li>
+            Hint: Split the input by looking for the index of the first
+            character.
+          </li>
+          <li>
+            I can convert 'gal' to 'L' and vice versa.
+            <b>(1 gal to 3.78541 L)</b>
+          </li>
+          <li>
+            I can convert 'lbs' to 'kg' and vice versa.
+            <b>(1 lbs to 0.453592 kg)</b>
+          </li>
+          <li>
+            I can convert 'mi' to 'km' and vice versa.
+            <b>(1 mi to 1.60934 km)</b>
+          </li>
+          <li>
+            If my unit of measurement is invalid, returned will be 'invalid
+            unit'.
+          </li>
+          <li>If my number is invalid, returned with will 'invalid number'.</li>
+          <li>
+            If both are invalid, return will be 'invalid number and unit'.
+          </li>
+          <li>
+            I can use fractions, decimals or both in my parameter(ie. 5, 1/2,
+            2.5/6), but if nothing is provided it will default to 1.
+          </li>
+          <li>
+            My return will consist of the initNum, initUnit, returnNum,
+            returnUnit, and string spelling out units in format
+            <code
+              >{initNum} {initial_Units} converts to {returnNum}
+              {return_Units}</code
+            >
+            with the result rounded to 5 decimals.
+          </li>
+          <li>All 16 unit tests are complete and passing.</li>
+          <li>All 5 functional tests are complete and passing.</li>
+        </ol>
+        <h3>Example usage:</h3>
+        <code>/api/convert?input=4gal</code><br />
+        <code>/api/convert?input=1/2km</code><br />
+        <code>/api/convert?input=5.4/3lbs</code><br />
+        <code>/api/convert?input=kg</code><br />
+        <h3>Example return:</h3>
+        <code
+          >{initNum: 3.1, initUnit: 'mi', returnNum: 5.0000008, returnUnit:
+          'km', string: '3.1 miles converts to 5.00002 kilometers'}</code
+        >
+      </div>
+   
+      <!-- Your web-app is https, so your scripts need to be too -->
+
+      <script>
+        //<form id="convertForm" class="border" action="/api/convert" method="get">
+
+        const myForm = document.getElementById("convertForm");
+
+        const myInput = document.getElementById("convertField");
+
+        const result = document.getElementById("result");
+
+        const jsonResult = document.getElementById("jsonResult");
+
+        myForm.onsubmit = function(e) {
+          e.preventDefault();
+
+          let myURL = new URL(location.origin + "/api/convert");
+          //to encode URL (not needed in this case)
+          myURL.searchParams.set("input", myInput.value.toString());
+
+          //also can be done as below:
+          //fetch("/api/convert?input=" + myInput.value.toString()
+          //but it works only because no URL encoding is needed
+          fetch(myURL)
+            .then(response => response.json())
+            .then(data => {
+              console.log(data.string);
+              result.innerText = data.string;
+
+              jsonResult.innerHTML = "";
+              let link = document.createElement("a");
+              link.setAttribute(
+                "href",
+                "/api/convert?input=" + myInput.value.toString()
+              );
+              link.setAttribute("target", "_blank");
+              link.innerText = data.string;
+              jsonResult.appendChild(link);
+            });
+        };
+      </script>
+    </div>
   </body>
 </html>

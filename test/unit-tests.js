@@ -38,21 +38,12 @@ describe("Function convertHandler.getNum(input)", function() {
 
 describe("Function convertHandler.getUnit(input)", function() {
   it("For Each Valid Unit Inputs", function(done) {
-    var input = [
-      "gal",
-      "L",
-      "mi",
-      "km",
-      "lbs",
-      "kg",
-     
-    ];
+    var input = ["gal", "L", "mi", "km", "lbs", "kg"];
     input.forEach(function(el) {
       assert.equal(convertHandler.getUnit(el), el);
     });
     done();
   });
-
 
   it("Unknown Unit Input", function(done) {
     var input = "adsflkj";

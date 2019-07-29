@@ -23,7 +23,7 @@ module.exports = function(app) {
     var returnNum = convertHandler.convert(initNum, initUnit);
     var returnUnit = convertHandler.getReturnUnit(initUnit);
 
-    var spellOutInit =convertHandler.spellOutUnit(initUnit);
+    var spellOutInit = convertHandler.spellOutUnit(initUnit);
     var spellOutReturn = convertHandler.spellOutUnit(returnUnit);
 
     var toString = convertHandler.getString(
@@ -33,21 +33,12 @@ module.exports = function(app) {
       spellOutReturn
     );
 
-    if (
-      
-        typeof initUnit === "undefined"
-      &&
-      typeof initNum === "undefined"
-    ) {
-      res.json({string: "invalid number and unit"});
-    } else if (
-      
-        typeof initUnit === "undefined"
-      
-    ) {
-      res.json({string: "invalid unit"});
+    if (typeof initUnit === "undefined" && typeof initNum === "undefined") {
+      res.json({ string: "invalid number and unit" });
+    } else if (typeof initUnit === "undefined") {
+      res.json({ string: "invalid unit" });
     } else if (typeof initNum === "undefined") {
-      res.json({string: "invalid number"});
+      res.json({ string: "invalid number" });
     } else {
       res.json({
         initNum: initNum,

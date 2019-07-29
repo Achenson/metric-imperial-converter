@@ -7,9 +7,8 @@
 	"description": "What am I about?",
 	"main": "server.js",
 	"scripts": {
-    "start": "nodemon server.js",
-    "build:css": "tailwind build public/style.css -o dist/styleTailwind.css" 
-    
+		"start": "nodemon server.js",
+		"build:css": "tailwind build public/style.css -o dist/styleTailwind.css"
 	},
 	"dependencies": {
 		"body-parser": "^1.15.2",
@@ -21,7 +20,6 @@
 		"mocha": "^6.2.0",
 		"mongodb": "^2.2.16",
 		"nodemon": "^1.19.1",
-		"tailwindcss": "^1.0.5",
 		"zombie": "^6.1.4"
 	},
 	"engines": {

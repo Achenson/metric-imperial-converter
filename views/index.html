@@ -13,66 +13,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="stylesheet" href="/dist/styleTailwind.css" /> -->
-    
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!--<div class="bg-red-100 px-1 sm:px-5 mx-auto max-w-3xl h-screen shadow "> -->
+
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-blue-100">
-    <div class="bg-red-100 px-1 sm:px-5 mx-auto max-w-3xl h-screen shadow ">
+  <body class="bg-blue-100 h-screen">
+    <div
+      class="container bg-red-100 h-screen mx-auto px-1 sm:px-5 w-full lg:w-4/6 xl:w-6/12 shadow"
+    >
       <header>
         <h1 class="text-3xl text-center font-semibold">
           Metric/Imperial Converter
         </h1>
-        <h2 class="text-center font-semibold text-gray-500 text-lg">FreeCodeCamp Apis And Microservices Project 01</h2>
+        <h2 class="text-center font-semibold text-gray-500 text-lg">
+          FreeCodeCamp Apis And Microservices Project 01
+        </h2>
       </header>
 
       <hr />
       <div id="instructions" class="my-5 text-lg">
-          <h3 class="text-xl font-semibold">Instructions</h3>
-        <ol class="list-decimal">
+        <h3 class="text-xl font-semibold">Instructions</h3>
+        <ol class="list-decimal list-inside">
+          <li>Enter input in a format of <b>[number]kg/lbs/L/gal/km/mi</b></li>
           <li>
-            Enter input in a format of <b>[number]kg/lbs/L/gal/km/mi</b>
+            Get value of the corresponding metric/imperial unit
           </li>
           <li>
-              Get value of the corresponding metric/imperial unit
-            </li>
-            <li>
-               Get a link for server's json response
-              </li>
-             
+            Get a link for server's json response
+          </li>
         </ol>
-
       </div>
 
       <div id="testui" class="mx-auto my-5 bg-green-200 h-48 ">
-        
-        <form id="convertForm" class="mx-auto px-64">
-          <input
-            type="text"
-            id="convertField"
-            name="input"
-            placeholder="3.1mi"
-            class="shadow appearance-none border my-5 w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none "
-          />
-         
-          <button
-            id="convert"
-            type="submit"
-            value="Convert!"
-            class="bg-green-500 hover:bg-green-700 w-full text-white font-bold py-2 px-2 shadow"
-          >
-            Convert
-          </button>
+        <form id="convertForm" class="mx-auto">
+          <div class="flex flex-col">
+            <input
+              type="text"
+              id="convertField"
+              name="input"
+              placeholder="3.1mi"
+              class="shadow appearance-none border mx-auto my-5  w-64 py-2 px-2 text-gray-700 leading-tight focus:outline-none "
+            />
+
+            <button
+              id="convert"
+              type="submit"
+              value="Convert!"
+              class="bg-green-500 hover:bg-green-700  mx-auto  w-64 text-white font-bold py-2 px-2 shadow"
+            >
+              Convert
+            </button>
+          </div>
         </form>
-        <p id="result"></p>
-        <code id="jsonResult"></code>
+        <br />
+        <div class="text-center">
+          <p id="result"></p>
+          <code id="jsonResult" class="underline text-blue-400"></code>
+        </div>
       </div>
       <hr />
 
-
-
       <div id="userstories">
         <h3 class="text-xl font-semibold">User Stories</h3>
-        <ol>
+        <ol class="list-decimal list-inside leading-snug">
           <li>
             I will help prevent the client from trying to guess(sniff) the MIME
             type.
@@ -122,18 +128,18 @@
           <li>All 16 unit tests are complete and passing.</li>
           <li>All 5 functional tests are complete and passing.</li>
         </ol>
-        <h3>Example usage:</h3>
+        <h3 class="text-xl font-semibold">Example usage:</h3>
         <code>/api/convert?input=4gal</code><br />
         <code>/api/convert?input=1/2km</code><br />
         <code>/api/convert?input=5.4/3lbs</code><br />
         <code>/api/convert?input=kg</code><br />
-        <h3>Example return:</h3>
+        <h3 class="text-xl font-semibold">Example return:</h3>
         <code
           >{initNum: 3.1, initUnit: 'mi', returnNum: 5.0000008, returnUnit:
           'km', string: '3.1 miles converts to 5.00002 kilometers'}</code
         >
       </div>
-   
+
       <!-- Your web-app is https, so your scripts need to be too -->
 
       <script>

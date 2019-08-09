@@ -46,7 +46,8 @@ module.exports = function(app) {
         returnNum: returnNum,
         returnUnit: returnUnit,
         string: toString
+        
       });
-    }
-  });
+    }  
+  }); 
 };
